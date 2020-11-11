@@ -1,0 +1,9 @@
+.App {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+html, body, #root, .App, .folder-list {
+  /* box-sizing: border-box; */
+  height: 100%;
+}
