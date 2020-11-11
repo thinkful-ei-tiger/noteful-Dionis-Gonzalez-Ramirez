@@ -1,18 +1,21 @@
 .folder-list {
   display: flex;
   flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
-  align-items: flex-end;
   width: 30%;
-  max-width: 225px;
-  background-color: rgb(248, 211, 163);
-  padding: 15px 0 45px 0;
+  height: calc(100% - 150px);
 }
 
 .folder-list a {
-  margin-top: 10px;
-  width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
   font-size: 20px;
   text-decoration: none;
+  height: 1.5em;
+  border: solid;
+  border-width: 1px;
+  width: 100%;
+  border-top-width: 0px;
 }

@@ -1,9 +1,8 @@
-.App {
-  display: flex;
-  flex-wrap: wrap;
+html, body, #root, .App {
+  height: 100%;
 }
 
-html, body, #root, .App, .folder-list {
-  /* box-sizing: border-box; */
-  height: 100%;
+main {
+  display: flex;
+  flex-wrap: wrap;
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import data from './data';
 import Note from './Note'
-import {Link} from 'react-router-dom';
 import './NoteList.css'
 
 class NoteList extends React.Component {

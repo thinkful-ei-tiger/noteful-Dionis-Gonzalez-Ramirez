@@ -9,7 +9,7 @@ function App() {
   return (
     <main className='App'>
       
-      <Route path='/' render={() => <HomePage />} />
+      <Route path='/' component={HomePage} />
       <Route exact path='/:folder' component={NoteList} />
       <Route path='/:folder/:note' component={NotePage} />
 

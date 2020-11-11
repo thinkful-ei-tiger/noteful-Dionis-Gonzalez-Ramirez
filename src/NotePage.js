@@ -1,5 +1,5 @@
 import React from 'react';
-import './NotePage.css'
+// import './NotePage.css'
 
 class NotePage extends React.Component {
   render() {
