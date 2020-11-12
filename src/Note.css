@@ -6,7 +6,7 @@
   border: solid;
   border-width: 1px;
   padding: 10px 55px 10px 35px;
-  border-top-width: 0px;
+  border-bottom-width: 0px;
   background-color: rgba(0, 170, 248, 0.507);
   text-decoration: none;
   font-size: 22px;
@@ -17,6 +17,10 @@
   z-index: 0;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.note-preview a {
+  color: rgb(59, 49, 100);
 }
 
 .note-preview p {
@@ -39,5 +43,5 @@
   font-size: 16px;
   width: 100px;
   padding: 5px 0;
-  z-index: 2;
+  box-shadow: 2px 2px gray;
 }

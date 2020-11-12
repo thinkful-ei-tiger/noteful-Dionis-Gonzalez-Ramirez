@@ -2,12 +2,8 @@
   box-sizing: border-box;
   height: calc(100% - 150px);
   width: 70%;
-  overflow-y: scroll;
   padding: 15px 30px;
-}
-
-.note-list a:first-of-type {
-  border-top-width: 1px;
+  overflow-y: scroll;
 }
 
 #add-note {

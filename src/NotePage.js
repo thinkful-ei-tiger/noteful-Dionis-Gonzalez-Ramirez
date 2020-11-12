@@ -7,6 +7,7 @@ class NotePage extends React.Component {
   editContent = (newContent) => {
     const found = data.notes.find(note => note.id === this.props.match.params.note)
     found.content = newContent;
+    found.modified = (new Date()).toISOString();
   }
 
   render() {
