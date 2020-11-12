@@ -1,0 +1,20 @@
+.folder-dropdown {
+  display: none;
+}
+
+@media all and (max-width: 600px) {
+  .folder-dropdown {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 12px 0;    
+  }
+
+  .folder-dropdown select {
+    width: 70%;
+    background-color: rgba(255, 255, 0, 0.199);
+    height: 3em;
+    font-size: 20px;
+    border: solid;
+    padding-left: 120px;
+  }
+}

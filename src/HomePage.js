@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header'
 import FolderList from './FolderList'
-// import './HomePage.css'
+import FolderDropdown from './FolderDropdown'
 
 class HomePage extends React.Component {
   render() {
@@ -9,6 +9,7 @@ class HomePage extends React.Component {
       <>
         <Header />
         <FolderList />
+        <FolderDropdown />
       </>
     )
   }

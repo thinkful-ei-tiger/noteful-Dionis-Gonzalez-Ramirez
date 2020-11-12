@@ -1,0 +1,15 @@
+.note-page {
+  box-sizing: border-box;
+  padding: 15px;
+  width: 70%;
+}
+
+.note-page p {
+  padding: 0 15px;
+}
+
+@media all and (max-width: 600px) {
+  .note-page {
+    width: 100%;
+  }
+}

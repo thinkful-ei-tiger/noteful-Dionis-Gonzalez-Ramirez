@@ -13,3 +13,9 @@
   font-size: 40px;
   color: white;
 }
+
+@media all and (max-width: 600px) {
+  .header {
+    min-height: 125px;
+  }
+}

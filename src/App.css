@@ -1,8 +1,21 @@
 html, body, #root, .App {
+  box-sizing: border-box;
   height: 100%;
+}
+
+html {
+  background-color: rgba(128, 128, 128, 0.137);
 }
 
 main {
   display: flex;
   flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+@media all and (max-width: 600px) {
+  main {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
 }
