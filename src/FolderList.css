@@ -21,6 +21,7 @@
   width: 100%;
   border-top-width: 0px;
   background-color: rgba(255, 187, 0, 0.466);
+  border-radius: 3px;
 }
 
 .folder-list a:hover {
@@ -29,6 +30,20 @@
 
 .folder-list a:nth-of-type(1) {
   border-top-width: 1px;
+}
+
+#add-folder {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  height: 12px;
+  width: 90%;
+  border-radius: 5px;
+  background-color: rgb(206, 206, 253);
+}
+
+#add-folder:hover {
+  background-color: rgb(180, 180, 230); 
 }
 
 @media all and (max-width: 600px) {

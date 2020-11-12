@@ -18,7 +18,9 @@ class Note extends React.Component {
       <div className='note-preview'>
         <Link
           to={`/${this.props.folderID}/${this.props.note.id}`}
-          key={this.props.note.id}>
+          key={this.props.note.id}
+          contentEditable
+        >
           {this.props.note.name}
           <p><i>Modified on {date}</i></p>
         </Link>

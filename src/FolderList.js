@@ -16,6 +16,7 @@ class FolderList extends React.Component {
             )
           })
         }
+        <Link id='add-folder' to={`/`}>Add Folder</Link>
       </div>
     )
   }

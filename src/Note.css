@@ -5,7 +5,7 @@
   min-height: 125px;
   border: solid;
   border-width: 1px;
-  padding: 0 55px 0 35px;
+  padding: 10px 55px 10px 35px;
   border-top-width: 0px;
   background-color: rgba(0, 170, 248, 0.507);
   text-decoration: none;
@@ -15,6 +15,8 @@
   color: rgba(0, 0, 0, 0.938);
   border-color: black;
   z-index: 0;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .note-preview p {
@@ -22,6 +24,7 @@
   font-size: 14px;
   font-weight: normal;
   color: rgb(80, 80, 80);
+  cursor: pointer;
 }
 
 .note-preview:hover {
@@ -31,6 +34,8 @@
 .note-preview button {
   align-self: flex-end;
   border: solid;
+  border-width: 2px;
+  border-radius: 5px;
   font-size: 16px;
   width: 100px;
   padding: 5px 0;

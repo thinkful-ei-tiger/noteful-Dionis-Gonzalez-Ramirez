@@ -10,6 +10,26 @@
   border-top-width: 1px;
 }
 
+#add-note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+  margin: 10px;
+  height: 2.5em;
+  border-radius: 5px;
+  background-color: rgba(0, 170, 248, 0.781);
+  border: solid;
+  border-width: 1.5px;
+  border-color: rgb(139, 131, 248);
+  color: black;
+  font-size: 18px;
+}
+
+#add-note:hover {
+  background-color: rgb(231, 197, 2);
+}
+
 @media all and (max-width: 600px) {
   .note-list {
     display: flex;
