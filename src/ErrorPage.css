@@ -5,20 +5,25 @@
   box-sizing: border-box;
   height: calc(100% - 150px);
   width: 70%;
+  height: 100%;
   padding: 10% 10px;
   text-align: center;
+  justify-self: center;
 }
 
-.error-prompt a {
+.error-prompt button {
   width: 150px;
   padding: 10px 0;
   font-weight: bold;
-  margin: 35px;
-  border: solid;
+  margin: 5% 35px;
   background-color: rgba(128, 128, 128, 0.226);
   color: black;
-  border-width: 2px;
+  border-width: 1px;
   border-radius: 5px;
+}
+
+.error-prompt button:hover {
+  background-color: rgba(128, 128, 128, 0.452);
 }
 
 @media all and (max-width: 600px) {

@@ -15,6 +15,8 @@ body {
 
 main {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   flex-wrap: wrap;
   box-sizing: border-box;
   height: 100%;
@@ -29,9 +31,20 @@ a, button {
   cursor: pointer;
 }
 
+.main-section {
+  box-sizing: border-box;
+  display: flex;
+  width: 90%;
+  height: calc(100% - 150px);
+}
+
 @media all and (max-width: 600px) {
   main {
     flex-direction: column;
     flex-wrap: nowrap;
+  }
+
+  .main-section {
+    padding: 0;
   }
 }
