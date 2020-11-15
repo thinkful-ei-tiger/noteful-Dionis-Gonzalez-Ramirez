@@ -4,7 +4,7 @@ import Header from './Header';
 // import SideNotes from './SideNotes';
 import SideFolders from './SideFolders';
 import HomePage from './HomePage'
-// import NoteList from './NoteList';
+import NoteList from './NoteList';
 // import NotePage from './NotePage';
 // import AddFolder from './AddFolder';
 // import AddNote from './AddNote';
@@ -22,10 +22,10 @@ function App() {
         </Switch>
         <Switch>
           <Route exact path='/' component={HomePage}/>
-          {/* <Route exact path='/folder/:folder' component={NoteList}/>
-          <Route path='/folder/:folder/note/:note' component={NotePage}/>
-          <Route path='/add-folder' component={AddFolder}/>
-          <Route path='/add-note' component={AddNote}/> */}
+          <Route exact path='/folder/:folder' component={NoteList}/>
+          {/* <Route path='/folder/:folder/note/:note' component={NotePage}/> */}
+          {/* <Route path='/add-folder' component={AddFolder}/> */}
+          {/* <Route path='/add-note' component={AddNote}/> */}
           <Route component={ErrorPage} />        
         </Switch>
       </div>

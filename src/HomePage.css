@@ -15,8 +15,8 @@
 .homepage img {
   max-width: 500px;
   max-height: 500px;
-  margin-top: 5%;
-  opacity: 0.20;
+  margin: 10% 0;
+  opacity: 0.35;
 }
 
 @media all and (max-width: 600px) {

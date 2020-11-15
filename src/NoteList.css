@@ -1,9 +1,9 @@
 .note-list {
   box-sizing: border-box;
-  height: calc(100% - 150px);
+  height: 100%;
   width: 70%;
   padding: 15px 30px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #add-note {

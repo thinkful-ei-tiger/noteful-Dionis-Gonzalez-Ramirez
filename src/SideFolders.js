@@ -8,7 +8,7 @@ class SideFolders extends React.Component {
   state = {folders: data.folders}
 
   addFolder = () => {
-    data.folders.push({id: data.folders.length+1, name: ''})
+    data.folders.push({id: (data.folders.length+1).toString(), name: ''})
     this.setState({folders: data.folders})
   }
   deleteFolder = () => {
@@ -26,6 +26,7 @@ class SideFolders extends React.Component {
 
   render() {
     const currentPath = this.props.location.pathname.split('folder/')[1];
+    console.log(currentPath)
     return (
       <div className='folder-list'>
         {
@@ -37,7 +38,6 @@ class SideFolders extends React.Component {
                   key={folder.id}
                   onBlur={(evt) => this.editFolder(evt)}
                   onKeyDown={(evt) => (evt.which === 13) ? evt.target.blur() : null}
-                  tabIndex='none'
                   onClick={(evt) => {
                     (evt.target.contentEditable === 'true')
                     ? evt.target.classList.add('animate')

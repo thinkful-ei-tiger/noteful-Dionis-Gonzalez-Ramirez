@@ -1,7 +1,7 @@
 @keyframes editing {
-  0% {background-color: rgba(255, 187, 0, 0.466);}
+  0% {background-color: yellow;}
   50% {background-color: white;}
-  100% {background-color: rgba(255, 187, 0, 0.466);}
+  100% {background-color: yellow;}
 }
 
 .folder-list {
@@ -10,9 +10,10 @@
   align-items: center;
   box-sizing: border-box;
   width: calc(30% - 25px);
-  height: calc(100% - 150px);
+  height: 100%;
   margin-left: 25px;
   margin-top: 5px;
+  overflow-y: auto;
 }
 
 .folder-list a {
@@ -65,7 +66,7 @@
 
 .animate {
   animation-name: editing;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-iteration-count: infinite;
 }
 

@@ -9,16 +9,15 @@ class Note extends React.Component {
     const found = data.notes.find(note => note.id === this.props.note.id)
     const indexFound = data.notes.indexOf(found)
     data.notes.splice(indexFound, 1)
-    this.props.history.push(`/${this.props.folderID || this.props.match.params.folder}`)
+    this.props.history.push(`/folder/${this.props.folderID || this.props.match.params.folder}`)
   }
   render() {
     const rawDate = (this.props.match.params.note) ? (new Date()).toString() : new Date(this.props.note.modified).toString();
     const date =  rawDate.split('GMT')[0];
-    console.log(date);
     return (
       <div className='note-preview'>
         <Link
-          to={`/${this.props.folderID}/${this.props.note.id}`}
+          to={`/folder/${this.props.folderID}/note/${this.props.note.id}`}
           key={this.props.note.id}
           contentEditable
           suppressContentEditableWarning="true"
