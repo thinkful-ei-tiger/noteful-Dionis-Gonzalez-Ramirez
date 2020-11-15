@@ -6,11 +6,14 @@ import ErrorPage from './ErrorPage'
 import './NoteList.css'
 
 class NoteList extends React.Component {
+  addNote() {
+    const newNote = {}
+  }
   render() {
     const folderID = this.props.match.params.folder || '';
     const notes = data.notes.filter(note => note.folderId === folderID) || [];
     const noteExists = notes[0] !== undefined;
-    const folderExists = data.folders.find(folder => folder.id === folderID) !== undefined
+    const folderExists = data.folders.find(folder => folder.id === folderID) !== undefined;
 
     return (
       (!noteExists && !folderExists)
@@ -28,7 +31,7 @@ class NoteList extends React.Component {
             )
           })
         }
-        <Link id='add-note'to='/'>Add Note</Link>
+        <button id='add-note'>Add Note</button>
       </div>
     )
   }

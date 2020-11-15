@@ -17,10 +17,16 @@
   z-index: 0;
   border-radius: 5px;
   cursor: pointer;
+  position: relative;
 }
 
 .note-preview a {
+  box-sizing: border-box;
   color: rgb(59, 49, 100);
+  width: calc(100% - 35px);
+  height: 100%;
+  position: absolute;
+  margin-top: 4%;
 }
 
 .note-preview p {
@@ -45,4 +51,9 @@
   padding: 5px 0;
   box-shadow: 2px 2px gray;
   margin: 10px 0;
+  z-index: 2;
+}
+
+.cancel-button {
+  z-index: 2;
 }

@@ -5,7 +5,15 @@ import data from './data';
 import './Note.css'
 
 class Note extends React.Component {
-  state = {previous: this.props.note}
+  static defaultProps = {
+    note: {
+      id: data.folders.length + 1,
+      name: '',
+      modified: '',
+      folderId: '',
+      content: ''
+    }
+  }
   delete = () => {
     const found = data.notes.find(note => note.id === this.props.note.id)
     const indexFound = data.notes.indexOf(found)
@@ -22,15 +30,23 @@ class Note extends React.Component {
   this.props.history.goBack();
   }
   render() {
-    const rawDate = (this.props.match.params.note) ? (new Date()).toString() : new Date(this.props.note.modified).toString();
+    const rawDate = 
+      (this.props.match.params.note)
+      ? (new Date()).toString()
+      : new Date(this.props.note.modified).toString();
     const date =  rawDate.split('GMT')[0];
+    const folder =
+      (this.props.folderID === undefined)
+      ? this.props.note.folderId
+      : this.props.folderID;
     return (
       <div className='note-preview'>
         <Link
-          to={`/folder/${this.props.folderID}/note/${this.props.note.id}`}
+          to={`/folder/${folder}/note/${this.props.note.id}`}
           key={this.props.note.id}
           contentEditable
           suppressContentEditableWarning="true"
+          onKeyDown={(evt) => (evt.which === 13) ? evt.target.blur() : null}
           onBlur={(evt) => {
             this.editTitle(evt.target.innerText.split('\n')[0])
           }}
@@ -40,6 +56,7 @@ class Note extends React.Component {
         </Link>
         <button onClick={this.delete}>Delete</button>
         <button
+          class='cancel-button'
           onClick={this.cancel}
           style={{
             display:

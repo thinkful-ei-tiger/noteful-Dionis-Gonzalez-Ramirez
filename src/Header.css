@@ -16,7 +16,7 @@
 }
 
 .header a:hover {
-  color: yellow;
+  color: rgb(255, 255, 87);
 }
 
 @media all and (max-width: 600px) {

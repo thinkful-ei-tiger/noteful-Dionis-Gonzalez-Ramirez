@@ -8,7 +8,7 @@ class SideFolders extends React.Component {
   state = {folders: data.folders}
 
   addFolder = () => {
-    data.folders.push({id: (data.folders.length+1).toString(), name: ''})
+    data.folders.push({id: data.folders.length+1, name: ''})
     this.setState({folders: data.folders})
   }
   deleteFolder = () => {
@@ -37,6 +37,7 @@ class SideFolders extends React.Component {
                   key={folder.id}
                   onBlur={(evt) => this.editFolder(evt)}
                   onKeyDown={(evt) => (evt.which === 13) ? evt.target.blur() : null}
+                  autofocus={(this.props.location.pathname).includes(folder.id)}
                   onClick={(evt) => {
                     (evt.target.contentEditable === 'true')
                     ? evt.target.classList.add('animate')
@@ -46,9 +47,9 @@ class SideFolders extends React.Component {
                   {folder.name}
                 </Link>
                 <button
-                  className='delete'
+                  className={'delete'}
                   onClick={this.deleteFolder}
-                  style={{display: (this.props.location.pathname.split('folder/')[1]) === folder.id ? 'block' : 'none'}}
+                  style={{display: (this.props.location.pathname).includes(folder.id) ? 'block' : 'none'}}
                 ><b>X</b></button>
               </div>
             )

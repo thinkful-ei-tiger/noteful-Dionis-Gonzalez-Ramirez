@@ -10,7 +10,7 @@ class AddFolder extends React.Component {
     return (
       <button
         id='add-folder'
-        onClick={() => this.props.addFolder()}
+        onClick={this.props.addFolder}
       >Add Folder
       </button>
     )
