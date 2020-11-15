@@ -26,7 +26,6 @@ class SideFolders extends React.Component {
 
   render() {
     const currentPath = this.props.location.pathname.split('folder/')[1];
-    console.log(currentPath)
     return (
       <div className='folder-list'>
         {

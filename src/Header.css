@@ -6,16 +6,22 @@
   height: 150px;
   background-color: black;
   position: relative;
-  font-size: 40px;
+  font-size: 65px;
   text-decoration: none;
+  font-family: 'Comic Sans MS';
 }
 
 .header a {
   color: white;
 }
 
+.header a:hover {
+  color: yellow;
+}
+
 @media all and (max-width: 600px) {
   .header {
     min-height: 125px;
+    font-size: 40px;
   }
 }
