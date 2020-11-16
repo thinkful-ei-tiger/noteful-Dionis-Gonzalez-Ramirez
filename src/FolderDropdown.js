@@ -1,6 +1,7 @@
 import React from 'react';
 import data from './data'
 import {withRouter} from 'react-router-dom';
+import MobileAddFolder from './MobileAddFolder'
 import './FolderDropdown.css'
 
 class FolderDropdown extends React.Component {
@@ -21,6 +22,7 @@ class FolderDropdown extends React.Component {
             })
           }
         </select>
+        <MobileAddFolder />
       </div>
     )
   }

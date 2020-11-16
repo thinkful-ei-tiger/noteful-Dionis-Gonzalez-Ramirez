@@ -3,6 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 import Header from './Header';
 import SideFolders from './SideFolders';
 import FolderDropdown from './FolderDropdown'
+import MobileNewFolder from './MobileNewFolder'
 import HomePage from './HomePage'
 import NoteList from './NoteList';
 import NotePage from './NotePage';
@@ -20,6 +21,7 @@ function App() {
           <Route exact path='/' component={HomePage}/>
           <Route exact path='/folder/:folder' component={NoteList}/>
           <Route path='/folder/:folder/note/:note' component={NotePage}/>
+          <Route path='/mobile-add-folder' component={MobileNewFolder} />4
           <Route component={ErrorPage} />
         </Switch>
       </div>

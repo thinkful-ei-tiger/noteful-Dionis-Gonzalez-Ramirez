@@ -11,3 +11,9 @@
 #add-folder:hover {
   background-color: rgb(180, 180, 230); 
 }
+
+@media all and (max-width: 600px) {
+  #add-folder {
+    height: 2.0em;
+  }
+}
