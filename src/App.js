@@ -6,7 +6,6 @@ import SideFolders from './SideFolders';
 import HomePage from './HomePage'
 import NoteList from './NoteList';
 import NotePage from './NotePage';
-// import AddNote from './AddNote';
 import ErrorPage from './ErrorPage'
 import './App.css'
 

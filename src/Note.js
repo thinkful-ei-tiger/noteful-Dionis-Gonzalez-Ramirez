@@ -5,15 +5,10 @@ import data from './data';
 import './Note.css'
 
 class Note extends React.Component {
-  static defaultProps = {
-    note: {
-      id: data.folders.length + 1,
-      name: '',
-      modified: '',
-      folderId: '',
-      content: ''
-    }
+  state = {
+    previousValues: {...this.props.note}
   }
+
   delete = () => {
     const found = data.notes.find(note => note.id === this.props.note.id)
     const indexFound = data.notes.indexOf(found)
@@ -21,12 +16,18 @@ class Note extends React.Component {
     this.props.history.push(`/folder/${this.props.folderID || this.props.match.params.folder}`)
   }
   editTitle = (newName) => {
-    const found = data.notes.find(note => note.id === this.props.note.id)
+    const noteID = 
+      (this.props.note.id === undefined)
+      ? this.props.match.params.note
+      : this.props.note.id
+    let found = data.notes.find(note => note.id === noteID)
+    found = (found === undefined) ? {} : found;
     Object.assign(found, {name: newName})
   }
   cancel = () => {
-  const found = data.notes.find(note => note.id === this.props.note.id)
-  Object.assign(found, this.props.note)
+  let found = data.notes.find(note => note.id === this.props.note.id)
+  found = (found === null || found === undefined) ? {} : found;
+  Object.assign(found, this.state.previousValues)
   this.props.history.goBack();
   }
   render() {
@@ -35,32 +36,35 @@ class Note extends React.Component {
       ? (new Date()).toString()
       : new Date(this.props.note.modified).toString();
     const date =  rawDate.split('GMT')[0];
-    const folder =
-      (this.props.folderID === undefined)
-      ? this.props.note.folderId
-      : this.props.folderID;
+    const folderID = 
+      [this.props.folderID, this.props.note.folderId, this.props.match.params.folder]
+      .find(folder => folder !== undefined)
+    const noteID =
+      [this.props.note.id, this.props.match.params.note]
+      .find(note => note !== undefined)
     return (
       <div className='note-preview'>
         <Link
-          to={`/folder/${folder}/note/${this.props.note.id}`}
+          to={`/folder/${folderID}/note/${noteID}`}
           key={this.props.note.id}
-          contentEditable
           suppressContentEditableWarning="true"
           onKeyDown={(evt) => (evt.which === 13) ? evt.target.blur() : null}
           onBlur={(evt) => {
+            evt.target.contentEditable = false;
             this.editTitle(evt.target.innerText.split('\n')[0])
           }}
+          onClick={(evt) => (evt.target.contentEditable === true) ? evt.target.toggle('note-title-selected') : evt.target.contentEditable = true}
         >
-          {this.props.note.name}
-          <p><i>Modified on {date}</i></p>
+          {(this.props.note.name === undefined) ? '[New Note]' : this.props.note.name}
+          <p contentEditable={false}><i>Modified on {date}</i></p>
         </Link>
         <button onClick={this.delete}>Delete</button>
         <button
-          class='cancel-button'
+          className='cancel-button'
           onClick={this.cancel}
           style={{
             display:
-              (`/folder/${this.props.note.folderId}/note/${this.props.note.id}` === this.props.match.url)
+              (`/folder/${folderID}/note/${noteID}` === this.props.match.url)
               ? 'block'
               : 'none'
           }}

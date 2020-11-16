@@ -8,7 +8,7 @@ class SideFolders extends React.Component {
   state = {folders: data.folders}
 
   addFolder = () => {
-    data.folders.push({id: data.folders.length+1, name: ''})
+    data.folders.push({id: `folder-${data.folders.length+1}`, name: ''})
     this.setState({folders: data.folders})
   }
   deleteFolder = () => {
@@ -25,19 +25,18 @@ class SideFolders extends React.Component {
   }
 
   render() {
-    const currentPath = this.props.location.pathname.split('folder/')[1];
+    // const currentPath = this.props.location.pathname.split('folder/')[1];
     return (
       <div className='folder-list'>
         {
-          this.state.folders.map(folder => {
+          this.state.folders.map((folder, idx) => {
             return (
-              <div className='folder'>
+              <div className='folder' key={idx}>
                 <Link
                   to={`/folder/${folder.id}`}
-                  key={folder.id}
                   onBlur={(evt) => this.editFolder(evt)}
                   onKeyDown={(evt) => (evt.which === 13) ? evt.target.blur() : null}
-                  autofocus={(this.props.location.pathname).includes(folder.id)}
+                  autoFocus={(this.props.location.pathname).includes(folder.id)}
                   onClick={(evt) => {
                     (evt.target.contentEditable === 'true')
                     ? evt.target.classList.add('animate')

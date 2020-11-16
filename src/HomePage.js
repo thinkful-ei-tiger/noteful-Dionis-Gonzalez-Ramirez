@@ -7,7 +7,7 @@ class HomePage extends React.Component {
     return (
       <div className='homepage'>
         <h2>Welcome to Noteful!</h2>
-        <img src={logo} />
+        <img src={logo} alt='logo' />
       </div>
     )
   }

@@ -1,3 +1,9 @@
+@keyframes editingNoteTitle {
+  0% {background-color: rgba(0, 170, 248, 0.507);}
+  50% {background-color: rgba(255, 255, 255, 0.295); text-shadow: 2px 2px rgba(255, 0, 0, 0.521);}
+  100% {background-color: rgba(0, 170, 248, 0.507);}
+}
+
 .note-preview {
   display: flex;
   flex-direction: column;
@@ -5,7 +11,7 @@
   min-height: 125px;
   border: solid;
   border-width: 1px;
-  padding: 10px 55px 10px 35px;
+  padding: 10px 75px 10px 0;
   border-bottom-width: 0px;
   background-color: rgba(0, 170, 248, 0.507);
   text-decoration: none;
@@ -20,13 +26,23 @@
   position: relative;
 }
 
+.note-preview a[contenteditable='true'] {
+  animation-name: editingNoteTitle;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  
+}
+
 .note-preview a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   box-sizing: border-box;
   color: rgb(59, 49, 100);
   width: calc(100% - 35px);
   height: 100%;
   position: absolute;
-  margin-top: 4%;
+  padding: 0 0 20px 35px;
 }
 
 .note-preview p {
@@ -54,6 +70,10 @@
   z-index: 2;
 }
 
+i {
+  color: rgb(128, 128, 128);
+}
+
 .cancel-button {
-  z-index: 2;
+  z-index: 3;
 }
