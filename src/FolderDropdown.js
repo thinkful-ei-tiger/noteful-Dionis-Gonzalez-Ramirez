@@ -4,13 +4,13 @@ import {withRouter} from 'react-router-dom';
 import './FolderDropdown.css'
 
 class FolderDropdown extends React.Component {
-  onChange = () => {
-    ;
-  }
   render() {
     return (
       <div className='folder-dropdown'>
-        <select onChange={(evt) => this.props.history.push(`/${evt.target.value}`)}>
+        <select onChange={(evt) => this.props.history.push(`/folder/${evt.target.value}`)}>
+          <option key='dropdown-title' selected disabled>
+            Folders...
+          </option>
           {
             data.folders.map(folder => {
               return (

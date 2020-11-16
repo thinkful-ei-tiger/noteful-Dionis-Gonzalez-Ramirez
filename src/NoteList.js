@@ -11,7 +11,7 @@ class NoteList extends React.Component {
   addNote = (folderID) => {
     data.notes.push({
       id: (data.notes.length + 1).toString(),
-      name: '[New Folder]',
+      name: '[New Note]',
       modified: (new Date()).toISOString(),
       folderId: folderID,
       content: ''
@@ -25,7 +25,6 @@ class NoteList extends React.Component {
     const note = notes[0]
     const noteExists = note !== undefined;
     const folderExists = data.folders.find(folder => folder.id === folderID) !== undefined;
-
     return (
       (!noteExists && !folderExists)
       ? <ErrorPage />

@@ -5,7 +5,7 @@
   border-radius: 5px;
   border-width: 1.5px;
   background-color: rgb(206, 206, 253);
-  width: 30%;
+  min-width: 30%;
 }
 
 #add-folder:hover {

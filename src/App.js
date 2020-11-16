@@ -1,8 +1,8 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import Header from './Header';
-// import SideNotes from './SideNotes';
 import SideFolders from './SideFolders';
+import FolderDropdown from './FolderDropdown'
 import HomePage from './HomePage'
 import NoteList from './NoteList';
 import NotePage from './NotePage';
@@ -14,10 +14,8 @@ function App() {
     <main className='App'>
       <Header />
       <div className='main-section'>
-        <Switch>
-          {/* <Route path='/folder/:folder' component={SideNotes} />         */}
-          <Route component={SideFolders} />        
-        </Switch>
+        <SideFolders />
+        <FolderDropdown />
         <Switch>
           <Route exact path='/' component={HomePage}/>
           <Route exact path='/folder/:folder' component={NoteList}/>
