@@ -13,7 +13,7 @@ class Note extends React.Component {
     const found = this.props.notes.find(note => note.id === this.props.note.id)
     const indexFound = this.props.notes.indexOf(found)
     this.props.notes.splice(indexFound, 1)
-    this.props.history.push(`/folder/${this.props.folderID || this.props.match.params.folder}`)
+    this.props.history.push(`/folders/${this.props.folderID || this.props.match.params.folder}`)
   }
   editTitle = (newName) => {
     const noteID = 
@@ -45,7 +45,7 @@ class Note extends React.Component {
     return (
       <div className='note-preview'>
         <Link
-          to={`/folder/${folderID}/note/${noteID}`}
+          to={`/folders/${folderID}/notes/${noteID}`}
           key={this.props.note.id}
           suppressContentEditableWarning="true"
           onKeyDown={(evt) => (evt.which === 13) ? evt.target.blur() : null}
@@ -65,7 +65,7 @@ class Note extends React.Component {
           onClick={this.cancel}
           style={{
             display:
-              (`/folder/${folderID}/note/${noteID}` === this.props.match.url)
+              (`/folders/${folderID}/notes/${noteID}` === this.props.match.url)
               ? 'block'
               : 'none'
           }}

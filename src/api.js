@@ -26,7 +26,6 @@ const editFolder = function(folderName, folderID) {
       body: JSON.stringify({name: folderName})
     })
     .then(res => res.json())
-    .then(resJson => console.log(resJson))
   )
 }
 

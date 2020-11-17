@@ -55,6 +55,36 @@ class App extends React.Component {
     })
   }
 
+  addNote = (folderID) => {
+    const newNote = {
+      name: '[New Note]',
+      modified: (new Date()).toISOString(),
+      folderId: folderID,
+      content: ''
+    }
+    api.addNote(newNote)
+    .then(serverNote => {
+      const folders = this.state.notes
+      folders.push(serverNote)
+      console.log(newNote.folderId)
+      this.setState({
+        ...this.state,
+        notes: [...this.state.notes, newNote]
+      })
+      this.props.history.push(`/folders/${newNote.folderId}/notes/${serverNote.id}`)
+    })
+
+
+    // this.props.notes.push({
+    //   id: (this.props.notes.length + 1).toString(),
+    //   name: '[New Note]',
+    //   modified: (new Date()).toISOString(),
+    //   folderId: folderID,
+    //   content: ''
+    // })
+    // this.setState({notes: this.props.notes})
+  }
+
   render() {
     return (
       <main className='App'>
@@ -74,7 +104,10 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' component={HomePage}/>
             <Route exact path='/folders/:folder' render={() =>
-              <NoteList notes={this.state.notes} />
+              <NoteList
+                notes={this.state.notes}
+                addNote={this.addNote}
+              />
             }/>
             <Route path='/folders/:folder/notes/:note' render={() =>
               <NotePage notes={this.state.notes} />
