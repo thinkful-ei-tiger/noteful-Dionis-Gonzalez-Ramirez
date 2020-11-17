@@ -14,8 +14,8 @@ class SideFolders extends React.Component {
             return (
               <div className='folder' key={idx}>
                 <Link
-                  to={`/folder/${folder.id}`}
-                  onBlur={(evt) => this.props.editFolder(evt, this.props.location.pathname.split('folder/')[1])}
+                  to={`/folders/${folder.id}`}
+                  onBlur={(evt) => this.props.editFolder(evt, this.props.location.pathname.split('folders/')[1])}
                   onKeyDown={(evt) => (evt.which === 13) ? evt.target.blur() : null}
                   autoFocus={(this.props.location.pathname).includes(folder.id)}
                   onClick={(evt) => {
@@ -28,7 +28,7 @@ class SideFolders extends React.Component {
                 </Link>
                 <button
                   className='folder-delete'
-                  onClick={() => this.props.deleteFolder(this.props.location.pathname.split('folder/')[1])}
+                  onClick={() => this.props.deleteFolder(this.props.location.pathname.split('folders/')[1])}
                   style={{display: (this.props.location.pathname).includes(folder.id) ? 'block' : 'none'}}
                 ><b>X</b>
                 </button>

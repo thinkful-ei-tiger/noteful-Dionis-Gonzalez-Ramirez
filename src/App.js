@@ -73,10 +73,10 @@ class App extends React.Component {
           />
           <Switch>
             <Route exact path='/' component={HomePage}/>
-            <Route exact path='/folder/:folder' render={() =>
+            <Route exact path='/folders/:folder' render={() =>
               <NoteList notes={this.state.notes} />
             }/>
-            <Route path='/folder/:folder/note/:note' render={() =>
+            <Route path='/folders/:folder/notes/:note' render={() =>
               <NotePage notes={this.state.notes} />
             }/>
             <Route path='/mobile-add-folder' component={MobileNewFolder} />4

@@ -38,9 +38,22 @@ const deleteFolder = function(folderID) {
   )
 }
 
+const addNote = function(newNote) {
+  const {folderId} = newNote;
+  return (
+    fetch(`${baseURL}/folders/${folderId}/notes/`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(newNote)
+    })
+    .then(res => res.json())
+  )
+}
+
 export default {
   getData,
   addFolder,
   editFolder,
-  deleteFolder
+  deleteFolder,
+  addNote
 }

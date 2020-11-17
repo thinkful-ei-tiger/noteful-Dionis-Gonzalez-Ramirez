@@ -3,20 +3,34 @@ import {Link} from 'react-router-dom'
 import Note from './Note'
 import ErrorPage from './ErrorPage'
 import {withRouter} from 'react-router-dom'
+import api from './api'
 import './NoteList.css'
 
 class NoteList extends React.Component {
   state = {notes: this.props.notes}
 
   addNote = (folderID) => {
-    this.props.notes.push({
-      id: (this.props.notes.length + 1).toString(),
+    const newNote = {
       name: '[New Note]',
       modified: (new Date()).toISOString(),
       folderId: folderID,
       content: ''
-    })
-    this.setState({notes: this.props.notes})
+    }
+    api.addNote(newNote)
+    // .then(newNoteJSON => {
+    //   this.setState({
+    //     notes: [...this.state.notes, newNoteJSON]
+    //   })
+    // })
+
+    // this.props.notes.push({
+    //   id: (this.props.notes.length + 1).toString(),
+    //   name: '[New Note]',
+    //   modified: (new Date()).toISOString(),
+    //   folderId: folderID,
+    //   content: ''
+    // })
+    // this.setState({notes: this.props.notes})
   }
 
   render() {
@@ -43,7 +57,7 @@ class NoteList extends React.Component {
         }
         <Link
           onClick={() => this.addNote(folderID)}
-          to={`/folder/${folderID}/note/${this.props.notes.length+1}`}
+          to={`/folders/${folderID}/notes/${note.id}`}
           id='add-note'
         >Add Note</Link>
       </div>
