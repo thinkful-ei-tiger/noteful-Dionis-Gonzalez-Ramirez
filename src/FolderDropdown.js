@@ -1,5 +1,4 @@
 import React from 'react';
-import data from './data'
 import {withRouter} from 'react-router-dom';
 import MobileAddFolder from './MobileAddFolder'
 import './FolderDropdown.css'
@@ -9,11 +8,11 @@ class FolderDropdown extends React.Component {
     return (
       <div className='folder-dropdown'>
         <select onChange={(evt) => this.props.history.push(`/folder/${evt.target.value}`)}>
-          <option key='dropdown-title' selected disabled>
+          <option key='dropdown-title' defaultValue disabled>
             Folders...
           </option>
           {
-            data.folders.map(folder => {
+            this.props.folders.map(folder => {
               return (
                 <option key={folder.id} value={folder.id}>
                   {folder.name}

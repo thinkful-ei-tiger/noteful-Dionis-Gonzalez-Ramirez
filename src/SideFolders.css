@@ -56,7 +56,7 @@
   display: none;
 }
 
-.delete {
+.folder-delete {
   height: 100%;
   border-width: 1px;
   background-color: red;

@@ -1,32 +1,31 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import data from './data';
 import Note from './Note'
 import ErrorPage from './ErrorPage'
+import {withRouter} from 'react-router-dom'
 import './NoteList.css'
 
 class NoteList extends React.Component {
-  state = {notes: data.notes}
+  state = {notes: this.props.notes}
 
   addNote = (folderID) => {
-    data.notes.push({
-      id: (data.notes.length + 1).toString(),
+    this.props.notes.push({
+      id: (this.props.notes.length + 1).toString(),
       name: '[New Note]',
       modified: (new Date()).toISOString(),
       folderId: folderID,
       content: ''
     })
-    this.setState({notes: data.notes})
+    this.setState({notes: this.props.notes})
   }
 
   render() {
+    console.log(this.props)
     const folderID = this.props.match.params.folder;
-    const notes = this.state.notes.filter(note => note.folderId === folderID) || [];
+    const notes = this.props.notes.filter(note => note.folderId === folderID);
     const note = notes[0]
-    const noteExists = note !== undefined;
-    const folderExists = data.folders.find(folder => folder.id === folderID) !== undefined;
     return (
-      (!noteExists && !folderExists)
+      (note === undefined)
       ? <ErrorPage />
       :
       <div className='note-list'>
@@ -36,18 +35,20 @@ class NoteList extends React.Component {
               <Note
                 folderID={folderID}
                 note={note}
-                key={this.props.match.params.note}
+                key={note.id}
+                notes={this.props.notes}
               />
             )
           })
         }
         <Link
           onClick={() => this.addNote(folderID)}
-          to={`/folder/${folderID}/note/${data.notes.length+1}`}
-          id='add-note'>Add Note</Link>
+          to={`/folder/${folderID}/note/${this.props.notes.length+1}`}
+          id='add-note'
+        >Add Note</Link>
       </div>
     )
   }
 }
 
-export default NoteList;
+export default withRouter(NoteList);

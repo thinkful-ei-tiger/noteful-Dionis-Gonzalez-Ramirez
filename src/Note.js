@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
-import data from './data';
 import './Note.css'
 
 class Note extends React.Component {
@@ -10,9 +9,10 @@ class Note extends React.Component {
   }
 
   delete = () => {
-    const found = data.notes.find(note => note.id === this.props.note.id)
-    const indexFound = data.notes.indexOf(found)
-    data.notes.splice(indexFound, 1)
+    console.log(this.props)
+    const found = this.props.notes.find(note => note.id === this.props.note.id)
+    const indexFound = this.props.notes.indexOf(found)
+    this.props.notes.splice(indexFound, 1)
     this.props.history.push(`/folder/${this.props.folderID || this.props.match.params.folder}`)
   }
   editTitle = (newName) => {
@@ -20,12 +20,12 @@ class Note extends React.Component {
       (this.props.note.id === undefined)
       ? this.props.match.params.note
       : this.props.note.id
-    let found = data.notes.find(note => note.id === noteID)
+    let found = this.props.notes.find(note => note.id === noteID)
     found = (found === undefined) ? {} : found;
     Object.assign(found, {name: newName})
   }
   cancel = () => {
-  let found = data.notes.find(note => note.id === this.props.note.id)
+  let found = this.props.notes.find(note => note.id === this.props.note.id)
   found = (found === null || found === undefined) ? {} : found;
   Object.assign(found, this.state.previousValues)
   this.props.history.goBack();
