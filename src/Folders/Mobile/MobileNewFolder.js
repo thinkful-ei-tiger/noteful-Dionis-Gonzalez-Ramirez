@@ -37,7 +37,6 @@ class MobileNewFolder extends React.Component {
           <input
             id='folder-name'
             type='text'
-            // value={this.props.folderName}
           />
           <button type='submit'>Submit</button>
           <button type='button'
