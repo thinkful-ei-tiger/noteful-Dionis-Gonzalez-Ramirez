@@ -26,12 +26,12 @@
 
   .homepage h2 {
     font-size: 28px;
-    margin-top: 20px;
+    margin-top: 0;
   }
 
   .homepage img {
-    max-width: 175px;
-    max-height: 175px;
+    max-width: 150px;
+    max-height: 150px;
     margin: 0;
   }
 }

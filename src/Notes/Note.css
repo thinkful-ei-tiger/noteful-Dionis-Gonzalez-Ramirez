@@ -7,10 +7,12 @@
 .note-preview {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: 125px;
+  box-sizing: border-box;
+  min-height: 200px;
   border: solid;
   border-width: 1px;
+  border-color: black;
+  border-radius: 5px;
   padding: 10px 75px 10px 0;
   border-bottom-width: 0px;
   background-color: rgba(0, 170, 248, 0.507);
@@ -19,9 +21,7 @@
   font-weight: bold;
   text-shadow: 1px 1px rgb(255, 255, 255);
   color: rgba(0, 0, 0, 0.938);
-  border-color: black;
   z-index: 0;
-  border-radius: 5px;
   cursor: pointer;
   position: relative;
 }
@@ -30,19 +30,17 @@
   animation-name: editingNoteTitle;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
-  
 }
 
 .note-preview a {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  display: block;
   box-sizing: border-box;
   color: rgb(59, 49, 100);
   width: calc(100% - 35px);
-  height: 100%;
-  position: absolute;
-  padding: 0 0 20px 35px;
+  height: 3em;
+  padding: 25px 0 20px 35px;
 }
 
 .note-preview p {
@@ -81,21 +79,28 @@ i {
 
 .buttons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
   margin-right: -25px;
 }
 
 @media all and (max-width: 600px) {
   .note-preview {
-    justify-content: flex-end;
+    text-align: center;
+    padding: 0;
   }
 
   .note-preview button {
     margin-left: 15px;
+    align-self: center;
   }
 
   .buttons {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    /* margin-bottom: 15px; */
+    padding-right: 20px;
   }
 }

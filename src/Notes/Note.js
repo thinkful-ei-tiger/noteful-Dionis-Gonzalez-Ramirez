@@ -59,9 +59,9 @@ class Note extends React.Component {
             onClick={(evt) => (evt.target.contentEditable === true) ? evt.target.toggle('note-title-selected') : evt.target.contentEditable = true}
           >
             {this.props.note.name}
-            <p contentEditable={false}><i>Modified on {date}</i></p>
           </Link>
           <div className='buttons'>
+          <p contentEditable={false}><i>Modified on {date}</i></p>
           <button onClick={() => this.context.deleteNote(noteID)}>Delete</button>
           <button
             className='cancel-button'

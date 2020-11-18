@@ -20,7 +20,6 @@ class NoteList extends React.Component {
   render() {
     const folderID = this.props.match.params.folder;
     const notes = this.props.state.notes.filter(note => note.folderId === folderID);
-    const note = notes[0]
     return (
       (this.props.state.folders.find(folder => folder.id === folderID) === undefined)
       ? <ErrorPage />
