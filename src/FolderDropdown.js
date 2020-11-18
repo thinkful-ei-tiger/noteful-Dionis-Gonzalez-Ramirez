@@ -7,8 +7,8 @@ class FolderDropdown extends React.Component {
   render() {
     return (
       <div className='folder-dropdown'>
-        <select onChange={(evt) => this.props.history.push(`/folder/${evt.target.value}`)}>
-          <option key='dropdown-title' defaultValue disabled>
+        <select onChange={(evt) => this.props.history.push(`/folders/${evt.target.value}`)}>
+          <option key='dropdown-title' selected disabled>
             Folders...
           </option>
           {
@@ -21,6 +21,24 @@ class FolderDropdown extends React.Component {
             })
           }
         </select>
+        <div
+          className='dropdown-buttons'
+          style={{display:(this.props.location.pathname === '/') ? 'none' : 'flex'}}
+        >
+        <button
+          id='mobile-edit-folder'
+          onClick={(evt) => {
+            this.props.editFolder(evt, this.props.location.pathname.split('folders/')[1])
+            this.props.history.push(`/mobile-folder`)
+          }}
+        >Edit
+        </button>
+        <button
+          id='mobile-delete-folder'
+          onClick={() => this.props.deleteFolder(this.props.location.pathname.split('folders/')[1])}
+        >Delete
+        </button>
+        </div>
         <MobileAddFolder />
       </div>
     )

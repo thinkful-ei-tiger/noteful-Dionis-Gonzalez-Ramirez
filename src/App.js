@@ -14,12 +14,12 @@ import './App.css'
 class App extends React.Component {
   state = {folders: [], notes: []}
 
-  addFolder = () => {
+  addFolder = (folderName = '') => {
     api.addFolder()
     .then(idJSON => {
       const newFolder = {
         id: idJSON.id,
-        name: ''
+        name: folderName
       }
       this.setState({
         ...this.state,
@@ -98,6 +98,7 @@ class App extends React.Component {
             folders={this.state.folders}
             addFolder={this.addFolder}
             deleteFolder={this.deleteFolder}
+            editFolder={this.editFolder}
           />
           <Switch>
             <Route exact path='/' component={HomePage}/>
@@ -114,7 +115,12 @@ class App extends React.Component {
                 deleteNote={this.deleteNote}
               />
             }/>
-            <Route path='/mobile-add-folder' component={MobileNewFolder} />4
+            <Route path='/mobile-folder' render={() => 
+              <MobileNewFolder
+                addFolder={this.addFolder}
+                folderID={this.props.location.pathname.split('folders/')[1]}
+              />
+            } />
             <Route component={ErrorPage} />
           </Switch>
         </div>

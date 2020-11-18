@@ -7,7 +7,7 @@ export default class MobileAddFolder extends React.Component {
   render() {
     return (
       <Link
-        to='/mobile-add-folder'
+        to='/mobile-folder'
         id='add-folder'
       >Add Folder
       </Link>
