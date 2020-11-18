@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
+import NotesContext from './NotesContext'
 import './Note.css'
 
 class Note extends React.Component {
@@ -8,13 +9,8 @@ class Note extends React.Component {
     previousValues: {...this.props.note}
   }
 
-  // delete = () => {
-  //   console.log(this.props)
-  //   const found = this.props.notes.find(note => note.id === this.props.note.id)
-  //   const indexFound = this.props.notes.indexOf(found)
-  //   this.props.notes.splice(indexFound, 1)
-  //   this.props.history.push(`/folders/${this.props.folderID || this.props.match.params.folder}`)
-  // }
+  static contextType = NotesContext;
+
   editTitle = (newName) => {
     const noteID = 
       (this.props.note.id === undefined)
@@ -43,35 +39,35 @@ class Note extends React.Component {
       [this.props.note.id, this.props.match.params.note]
       .find(note => note !== undefined)
     return (
-      <div className='note-preview'>
-        <Link
-          to={`/folders/${folderID}/notes/${noteID}`}
-          key={this.props.note.id}
-          suppressContentEditableWarning="true"
-          onKeyDown={(evt) => (evt.which === 13) ? evt.target.blur() : null}
-          onBlur={(evt) => {
-            evt.target.contentEditable = false;
-            this.editTitle(evt.target.innerText.split('\n')[0])
-          }}
-          onClick={(evt) => (evt.target.contentEditable === true) ? evt.target.toggle('note-title-selected') : evt.target.contentEditable = true}
-        >
-          {this.props.note.name}
-          <p contentEditable={false}><i>Modified on {date}</i></p>
-        </Link>
-        <div className='buttons'>
-        <button onClick={() => this.props.deleteNote(noteID)}>Delete</button>
-        <button
-          className='cancel-button'
-          onClick={this.cancel}
-          style={{
-            display:
-              (`/folders/${folderID}/notes/${noteID}` === this.props.match.url)
-              ? 'block'
-              : 'none'
-          }}
-        >Cancel</button>
+        <div className='note-preview'>
+          <Link
+            to={`/folders/${folderID}/notes/${noteID}`}
+            key={this.props.note.id}
+            suppressContentEditableWarning="true"
+            onKeyDown={(evt) => (evt.which === 13) ? evt.target.blur() : null}
+            onBlur={(evt) => {
+              evt.target.contentEditable = false;
+              this.editTitle(evt.target.innerText.split('\n')[0])
+            }}
+            onClick={(evt) => (evt.target.contentEditable === true) ? evt.target.toggle('note-title-selected') : evt.target.contentEditable = true}
+          >
+            {this.props.note.name}
+            <p contentEditable={false}><i>Modified on {date}</i></p>
+          </Link>
+          <div className='buttons'>
+          <button onClick={() => this.context.deleteNote(noteID)}>Delete</button>
+          <button
+            className='cancel-button'
+            onClick={this.cancel}
+            style={{
+              display:
+                (`/folders/${folderID}/notes/${noteID}` === this.props.match.url)
+                ? 'block'
+                : 'none'
+            }}
+          >Cancel</button>
+          </div>
         </div>
-      </div>
     )
   }
 }

@@ -7,7 +7,7 @@ class ErrorPage extends React.Component {
     return (
     <div className='error-prompt'>
       <h3>Sorry, that folder or note doesn't exist.</h3>
-      <button onClick={this.props.history.goBack}className='try-again'>Try Again</button>
+      <button onClick={() => this.props.history.push('/')}className='try-again'>Try Again</button>
     </div>
     )
   }

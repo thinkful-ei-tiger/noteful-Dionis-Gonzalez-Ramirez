@@ -1,9 +1,12 @@
 import React from 'react';
 import Note from './Note';
 import {withRouter} from 'react-router-dom'
+import NotesContext from './NotesContext'
 import './NotePage.css'
 
 class NotePage extends React.Component {
+  static contextType = NotesContext;
+
   editContent = (newContent) => {
     let found = this.props.notes.find(note => note.id === this.props.match.params.note)
     found = (found === undefined) ? {} : found;
@@ -19,7 +22,6 @@ class NotePage extends React.Component {
         <Note
           note={note}
           notes={this.props.notes}
-          deleteNote={this.props.deleteNote}
         />
         <div
           contentEditable

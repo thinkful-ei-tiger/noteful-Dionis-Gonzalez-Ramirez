@@ -8,6 +8,7 @@ import HomePage from './HomePage'
 import NoteList from './NoteList';
 import NotePage from './NotePage';
 import ErrorPage from './ErrorPage'
+import NotesContext from './NotesContext'
 import api from './api'
 import './App.css'
 
@@ -17,14 +18,14 @@ class App extends React.Component {
   addFolder = (folderName = '') => {
     api.addFolder()
     .then(idJSON => {
+      console.log(folderName)
       const newFolder = {
         id: idJSON.id,
         name: folderName
       }
-      this.setState({
-        ...this.state,
-        folders: [...this.state.folders, newFolder]
-      })
+      const newState = this.state
+      newState.folders.push(newFolder)
+      this.setState(newState)
     })
   }
 
@@ -100,29 +101,34 @@ class App extends React.Component {
             deleteFolder={this.deleteFolder}
             editFolder={this.editFolder}
           />
-          <Switch>
-            <Route exact path='/' component={HomePage}/>
-            <Route exact path='/folders/:folder' render={() =>
-              <NoteList
-                notes={this.state.notes}
-                addNote={this.addNote}
-                deleteNote={this.deleteNote}
-              />
-            }/>
-            <Route path='/folders/:folder/notes/:note' render={() =>
-              <NotePage
-                notes={this.state.notes}
-                deleteNote={this.deleteNote}
-              />
-            }/>
-            <Route path='/mobile-folder' render={() => 
-              <MobileNewFolder
-                addFolder={this.addFolder}
-                folderID={this.props.location.pathname.split('folders/')[1]}
-              />
-            } />
-            <Route component={ErrorPage} />
-          </Switch>
+          <NotesContext.Provider value={{
+              addNote: this.addNote,
+              deleteNote: this.deleteNote
+            }}>
+            <Switch>
+                <Route exact path='/' component={HomePage}/>
+                  <Route exact path='/folders/:folder' render={() =>
+                    <NoteList
+                      notes={this.state.notes}
+                      addNote={this.addNote}
+                      deleteNote={this.deleteNote}
+                    />
+                  }/>
+                  <Route path='/folders/:folder/notes/:note' render={() =>
+                    <NotePage
+                      notes={this.state.notes}
+                      deleteNote={this.deleteNote}
+                    />
+                  }/>
+                <Route path='/mobile-folder' render={() => 
+                  <MobileNewFolder
+                    addFolder={this.addFolder}
+                    folderID={this.props.location.pathname.split('folders/')[1]}
+                  />
+                } />
+                <Route component={ErrorPage} />
+            </Switch>
+          </NotesContext.Provider>
         </div>
       </main>
     )
