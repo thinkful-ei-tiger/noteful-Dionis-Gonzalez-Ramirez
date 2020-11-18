@@ -1,5 +1,6 @@
 # Noteful-Dionis-Gonzalez-Ramirez
-Simple Noteful app
+Simple Noteful app \
+Live: https://noteful-5ffxujxvd.vercel.app/
 
 ## Noteful JSON server
 To get your local copy of the noteful API, clone this project into your local projects folder.
