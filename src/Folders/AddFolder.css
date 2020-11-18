@@ -16,5 +16,6 @@
 @media all and (max-width: 600px) {
   #add-folder {
     height: 2.0em;
+    margin-bottom: 25px;
   }
 }
