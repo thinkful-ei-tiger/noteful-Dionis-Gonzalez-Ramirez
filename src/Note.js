@@ -8,13 +8,13 @@ class Note extends React.Component {
     previousValues: {...this.props.note}
   }
 
-  delete = () => {
-    console.log(this.props)
-    const found = this.props.notes.find(note => note.id === this.props.note.id)
-    const indexFound = this.props.notes.indexOf(found)
-    this.props.notes.splice(indexFound, 1)
-    this.props.history.push(`/folders/${this.props.folderID || this.props.match.params.folder}`)
-  }
+  // delete = () => {
+  //   console.log(this.props)
+  //   const found = this.props.notes.find(note => note.id === this.props.note.id)
+  //   const indexFound = this.props.notes.indexOf(found)
+  //   this.props.notes.splice(indexFound, 1)
+  //   this.props.history.push(`/folders/${this.props.folderID || this.props.match.params.folder}`)
+  // }
   editTitle = (newName) => {
     const noteID = 
       (this.props.note.id === undefined)
@@ -28,7 +28,7 @@ class Note extends React.Component {
   let found = this.props.notes.find(note => note.id === this.props.note.id)
   found = (found === null || found === undefined) ? {} : found;
   Object.assign(found, this.state.previousValues)
-  this.props.history.goBack();
+  this.props.history.push(`/folders/${this.props.note.folderId}`);
   }
   render() {
     const rawDate = 
@@ -59,7 +59,7 @@ class Note extends React.Component {
           <p contentEditable={false}><i>Modified on {date}</i></p>
         </Link>
         <div className='buttons'>
-        <button onClick={this.delete}>Delete</button>
+        <button onClick={() => this.props.deleteNote(noteID)}>Delete</button>
         <button
           className='cancel-button'
           onClick={this.cancel}

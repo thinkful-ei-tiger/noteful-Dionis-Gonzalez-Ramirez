@@ -67,22 +67,20 @@ class App extends React.Component {
       const folders = this.state.notes
       folders.push(serverNote)
       console.log(newNote.folderId)
-      this.setState({
-        ...this.state,
-        notes: [...this.state.notes, newNote]
-      })
       this.props.history.push(`/folders/${newNote.folderId}/notes/${serverNote.id}`)
     })
+  }
 
-
-    // this.props.notes.push({
-    //   id: (this.props.notes.length + 1).toString(),
-    //   name: '[New Note]',
-    //   modified: (new Date()).toISOString(),
-    //   folderId: folderID,
-    //   content: ''
-    // })
-    // this.setState({notes: this.props.notes})
+  deleteNote = (noteID) => {
+    const notes = this.state.notes;
+    console.log(this.props)
+    const found = notes.find(note => note.id === noteID)
+    const indexFound = notes.indexOf(found)
+    notes.splice(indexFound, 1)
+    this.setState({notes: notes})
+    // this.props.history.goBack();
+    this.props.history.push(`/folders/${found.folderId}`)
+    api.deleteNote(noteID)
   }
 
   render() {
@@ -107,10 +105,14 @@ class App extends React.Component {
               <NoteList
                 notes={this.state.notes}
                 addNote={this.addNote}
+                deleteNote={this.deleteNote}
               />
             }/>
             <Route path='/folders/:folder/notes/:note' render={() =>
-              <NotePage notes={this.state.notes} />
+              <NotePage
+                notes={this.state.notes}
+                deleteNote={this.deleteNote}
+              />
             }/>
             <Route path='/mobile-add-folder' component={MobileNewFolder} />4
             <Route component={ErrorPage} />

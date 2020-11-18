@@ -19,6 +19,7 @@ class NotePage extends React.Component {
         <Note
           note={note}
           notes={this.props.notes}
+          deleteNote={this.props.deleteNote}
         />
         <div
           contentEditable

@@ -1,7 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
 import Note from './Note'
-import ErrorPage from './ErrorPage'
 import {withRouter} from 'react-router-dom'
 import api from './api'
 import './NoteList.css'
@@ -11,12 +9,9 @@ class NoteList extends React.Component {
 
   render() {
     const folderID = this.props.match.params.folder;
-    const notes = this.props.notes.filter(note => note.folderId === folderID);
+    const notes = this.state.notes.filter(note => note.folderId === folderID);
     const note = notes[0]
     return (
-      (note === undefined)
-      ? <ErrorPage />
-      :
       <div className='note-list'>
         {
           notes.map(note => {
@@ -25,16 +20,16 @@ class NoteList extends React.Component {
                 folderID={folderID}
                 note={note}
                 key={note.id}
-                notes={this.props.notes}
+                notes={this.state.notes}
+                deleteNote={this.props.deleteNote}
               />
             )
           })
         }
-        <Link
+        <button
           onClick={() => this.props.addNote(folderID)}
-          to={`/folders/${folderID}/notes/${note.id}`}
           id='add-note'
-        >Add Note</Link>
+        >Add Note</button>
       </div>
     )
   }

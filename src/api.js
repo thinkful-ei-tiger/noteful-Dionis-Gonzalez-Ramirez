@@ -49,10 +49,19 @@ const addNote = function(newNote) {
   )
 }
 
+const deleteNote = function(noteID) {
+  return (
+    fetch(`${baseURL}/notes/${noteID}`, {
+      method: 'DELETE',
+    })
+  )
+}
+
 export default {
   getData,
   addFolder,
   editFolder,
   deleteFolder,
-  addNote
+  addNote,
+  deleteNote
 }
