@@ -109,9 +109,9 @@ class App extends React.Component {
                 <Route exact path='/' component={HomePage}/>
                   <Route exact path='/folders/:folder' render={() =>
                     <NoteList
-                      notes={this.state.notes}
                       addNote={this.addNote}
                       deleteNote={this.deleteNote}
+                      state={this.state}
                     />
                   }/>
                   <Route path='/folders/:folder/notes/:note' render={() =>

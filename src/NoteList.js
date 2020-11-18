@@ -6,16 +6,18 @@ import ErrorPage from './ErrorPage'
 import './NoteList.css'
 
 class NoteList extends React.Component {
-  state = {notes: this.props.notes}
+  state = this.props.state;
 
   static contextType = NotesContext;
 
   render() {
     const folderID = this.props.match.params.folder;
-    const notes = this.state.notes.filter(note => note.folderId === folderID);
+    const notes = this.props.state.notes.filter(note => note.folderId === folderID);
     const note = notes[0]
+    console.log(notes)
     return (
-      (note === undefined)
+      // (note === undefined)
+      (this.props.state.folders.find(folder => folder.id === folderID) === undefined)
       ? <ErrorPage />
       :
       <div className='note-list'>
@@ -26,7 +28,7 @@ class NoteList extends React.Component {
                 folderID={folderID}
                 note={note}
                 key={note.id}
-                notes={this.state.notes}
+                notes={this.props.state.notes}
               />
             )
           })
