@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter} from 'react-router-dom'
 import renderer from 'react-test-renderer'
-import {NoteList} from './NoteList'
+import {NoteList} from './Notes/NoteList'
 import App from './App';
 
 test('renders without crashing (smoke test)', () => {

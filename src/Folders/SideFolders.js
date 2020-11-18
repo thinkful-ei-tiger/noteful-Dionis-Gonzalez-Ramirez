@@ -1,6 +1,6 @@
 import React from 'react';
-import AddFolder from './AddFolder'
 import {Link, withRouter} from 'react-router-dom';
+import AddFolder from './AddFolder'
 import './SideFolders.css'
 
 class SideFolders extends React.Component {

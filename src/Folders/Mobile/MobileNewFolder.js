@@ -1,6 +1,6 @@
 import React from 'react';
-import data from './data';
-import api from './api'
+import data from '../.././data';
+import api from '../.././api'
 import {withRouter} from 'react-router-dom'
 import './MobileNewFolder.css'
 

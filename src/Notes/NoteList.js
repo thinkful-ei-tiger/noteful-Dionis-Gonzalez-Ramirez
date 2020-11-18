@@ -1,8 +1,8 @@
 import React from 'react';
 import Note from './Note'
 import {withRouter} from 'react-router-dom'
-import NotesContext from './NotesContext'
-import ErrorPage from './ErrorPage'
+import NotesContext from '.././NotesContext'
+import ErrorPage from '../DefaultPages/ErrorPage'
 import './NoteList.css'
 
 class NoteList extends React.Component {

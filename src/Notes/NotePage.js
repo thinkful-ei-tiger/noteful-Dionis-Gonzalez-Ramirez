@@ -1,7 +1,7 @@
 import React from 'react';
-import Note from './Note';
 import {withRouter} from 'react-router-dom'
-import NotesContext from './NotesContext'
+import NotesContext from '.././NotesContext'
+import Note from './Note';
 import './NotePage.css'
 
 class NotePage extends React.Component {

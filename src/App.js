@@ -1,13 +1,13 @@
 import React from 'react';
 import {withRouter, Route, Switch} from 'react-router-dom';
-import Header from './Header';
-import SideFolders from './SideFolders';
-import FolderDropdown from './FolderDropdown'
-import MobileNewFolder from './MobileNewFolder'
-import HomePage from './HomePage'
-import NoteList from './NoteList';
-import NotePage from './NotePage';
-import ErrorPage from './ErrorPage'
+import Header from './Header/Header';
+import SideFolders from './Folders/SideFolders';
+import FolderDropdown from './Folders/Mobile/FolderDropdown'
+import MobileNewFolder from './Folders/Mobile/MobileNewFolder'
+import HomePage from './DefaultPages/HomePage'
+import NoteList from './Notes/NoteList';
+import NotePage from './Notes/NotePage';
+import ErrorPage from './DefaultPages/ErrorPage'
 import NotesContext from './NotesContext'
 import api from './api'
 import './App.css'
