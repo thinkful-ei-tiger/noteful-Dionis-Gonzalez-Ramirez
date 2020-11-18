@@ -7,8 +7,11 @@ class FolderDropdown extends React.Component {
   render() {
     return (
       <div className='folder-dropdown'>
-        <select onChange={(evt) => this.props.history.push(`/folders/${evt.target.value}`)}>
-          <option key='dropdown-title' selected disabled>
+        <select
+          defaultValue=''
+          onChange={(evt) => this.props.history.push(`/folders/${evt.target.value}`)}
+        >
+          <option key='dropdown-title' value='' disabled>
             Folders...
           </option>
           {
