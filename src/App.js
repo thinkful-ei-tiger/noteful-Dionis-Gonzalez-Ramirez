@@ -9,6 +9,7 @@ import NoteList from './Notes/NoteList';
 import NotePage from './Notes/NotePage';
 import ErrorPage from './DefaultPages/ErrorPage'
 import NotesContext from './NotesContext'
+import RuntimeError from './RuntimeError'
 import api from './api'
 import './App.css'
 
@@ -82,46 +83,52 @@ class App extends React.Component {
       <main className='App'>
         <Header />
         <div className='main-section'>
-          <SideFolders
-            folders={this.state.folders}
-            addFolder={this.addFolder}
-            deleteFolder={this.deleteFolder}
-            editFolder={this.editFolder}
-          />
-          <FolderDropdown
-            folders={this.state.folders}
-            addFolder={this.addFolder}
-            deleteFolder={this.deleteFolder}
-            editFolder={this.editFolder}
-          />
+          <RuntimeError>
+            <SideFolders
+              folders={this.state.folders}
+              addFolder={this.addFolder}
+              deleteFolder={this.deleteFolder}
+              editFolder={this.editFolder}
+            />
+          </RuntimeError>
+          <RuntimeError>
+            <FolderDropdown
+              folders={this.state.folders}
+              addFolder={this.addFolder}
+              deleteFolder={this.deleteFolder}
+              editFolder={this.editFolder}
+            />
+          </RuntimeError>
           <NotesContext.Provider value={{
               addNote: this.addNote,
               deleteNote: this.deleteNote
             }}>
-            <Switch>
-                <Route exact path='/' component={HomePage}/>
-                  <Route exact path='/folders/:folder' render={() =>
-                    <NoteList
-                      addNote={this.addNote}
-                      deleteNote={this.deleteNote}
-                      state={this.state}
+            <RuntimeError>
+              <Switch>
+                  <Route exact path='/' component={HomePage}/>
+                    <Route exact path='/folders/:folder' render={() =>
+                      <NoteList
+                        addNote={this.addNote}
+                        deleteNote={this.deleteNote}
+                        state={this.state}
+                      />
+                    }/>
+                    <Route path='/folders/:folder/notes/:note' render={() =>
+                      <NotePage
+                        notes={this.state.notes}
+                        deleteNote={this.deleteNote}
+                      />
+                    }/>
+                  <Route path='/mobile-folder' render={() => 
+                    <MobileNewFolder
+                      addFolder={this.addFolder}
+                      editFolder={this.editFolder}
+                      folderID={this.props.location.pathname.split('folders/')[1]}
                     />
-                  }/>
-                  <Route path='/folders/:folder/notes/:note' render={() =>
-                    <NotePage
-                      notes={this.state.notes}
-                      deleteNote={this.deleteNote}
-                    />
-                  }/>
-                <Route path='/mobile-folder' render={() => 
-                  <MobileNewFolder
-                    addFolder={this.addFolder}
-                    editFolder={this.editFolder}
-                    folderID={this.props.location.pathname.split('folders/')[1]}
-                  />
-                } />
-                <Route component={ErrorPage} />
-            </Switch>
+                  } />
+                  <Route component={ErrorPage} />
+              </Switch>
+            </RuntimeError>
           </NotesContext.Provider>
         </div>
       </main>
