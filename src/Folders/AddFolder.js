@@ -1,7 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './AddFolder.css'
 
 class AddFolder extends React.Component {
+  static propTypes = {
+    addFolder: PropTypes.func.isRequired
+  }
   
   render() {
     return (

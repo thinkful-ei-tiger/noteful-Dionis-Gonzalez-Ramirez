@@ -1,11 +1,16 @@
 import React from 'react';
-import data from '../.././data';
-import api from '../.././api'
 import {withRouter} from 'react-router-dom'
+import PropTypes from 'prop-types'
 import './MobileNewFolder.css'
 
 class MobileNewFolder extends React.Component {
   static defaultProps = {folderName: ''}
+
+  static propTypes = {
+    addFolder: PropTypes.func.isRequired,
+    editFolder: PropTypes.func.isRequired,
+    folderID: PropTypes.string
+  }
 
   mobileAddFolder = (evt) => {
     evt.preventDefault();

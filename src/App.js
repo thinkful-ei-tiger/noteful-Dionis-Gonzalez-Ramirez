@@ -63,19 +63,16 @@ class App extends React.Component {
     .then(serverNote => {
       const folders = this.state.notes
       folders.push(serverNote)
-      console.log(newNote.folderId)
       this.props.history.push(`/folders/${newNote.folderId}/notes/${serverNote.id}`)
     })
   }
 
   deleteNote = (noteID) => {
     const notes = this.state.notes;
-    console.log(this.props)
     const found = notes.find(note => note.id === noteID)
     const indexFound = notes.indexOf(found)
     notes.splice(indexFound, 1)
     this.setState({notes: notes})
-    // this.props.history.goBack();
     this.props.history.push(`/folders/${found.folderId}`)
     api.deleteNote(noteID)
   }

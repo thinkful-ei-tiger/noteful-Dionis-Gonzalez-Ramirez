@@ -1,6 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
+import PropTypes from 'prop-types'
 import NotesContext from '.././NotesContext'
 import './Note.css'
 
@@ -10,6 +10,13 @@ class Note extends React.Component {
   }
 
   static contextType = NotesContext;
+
+  static propTypes = {
+    notes: PropTypes.array.isRequired,
+    note: PropTypes.object.isRequired,
+    key: PropTypes.string,
+    folderID: PropTypes.string
+  }
 
   editTitle = (newName) => {
     const noteID = 

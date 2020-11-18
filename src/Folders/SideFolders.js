@@ -1,10 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import {Link, withRouter} from 'react-router-dom';
 import AddFolder from './AddFolder'
 import './SideFolders.css'
 
 class SideFolders extends React.Component {
   state = {folders: this.props.folders}
+
+  static propTypes = {
+    folders: PropTypes.array.isRequired,
+    addFolder: PropTypes.func.isRequired,
+    deleteFolder: PropTypes.func.isRequired,
+    editFolder: PropTypes.func.isRequired
+  }
 
   render() {
     return (

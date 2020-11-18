@@ -1,11 +1,17 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom'
-import NotesContext from '.././NotesContext'
+import PropTypes from 'prop-types'
 import Note from './Note';
+import NotesContext from '.././NotesContext'
 import './NotePage.css'
 
 class NotePage extends React.Component {
   static contextType = NotesContext;
+
+  static propTypes = {
+    notes: PropTypes.array.isRequired,
+    deleteNote: PropTypes.func.isRequired
+  }
 
   editContent = (newContent) => {
     let found = this.props.notes.find(note => note.id === this.props.match.params.note)
