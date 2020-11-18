@@ -18,7 +18,6 @@ class App extends React.Component {
   addFolder = (folderName = '') => {
     api.addFolder()
     .then(idJSON => {
-      console.log(folderName)
       const newFolder = {
         id: idJSON.id,
         name: folderName
@@ -42,8 +41,7 @@ class App extends React.Component {
     this.props.history.push('/')
   }
 
-  editFolder = (evt, folderID) => {
-    const newFolderName = evt.target.textContent;
+  editFolder = (newFolderName, folderID) => {
     api.editFolder(newFolderName, folderID)
     .then(folderJSON => {
       const folders = this.state.folders;
@@ -51,8 +49,6 @@ class App extends React.Component {
       if (existing === undefined || existing === null) return;
       Object.assign(existing, folderJSON);
       this.setState({...this.state, folders: folders})
-      evt.target.contentEditable = false;
-      evt.target.classList.remove('animate');
     })
   }
 
@@ -123,6 +119,7 @@ class App extends React.Component {
                 <Route path='/mobile-folder' render={() => 
                   <MobileNewFolder
                     addFolder={this.addFolder}
+                    editFolder={this.editFolder}
                     folderID={this.props.location.pathname.split('folders/')[1]}
                   />
                 } />

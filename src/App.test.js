@@ -11,7 +11,7 @@ test('renders without crashing (smoke test)', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-it('renders the User Interface as expected', () => {
+it('renders the User Interface as expected (snapshot test)', () => {
   const tree = renderer
     .create(NoteList)
     .toJSON();

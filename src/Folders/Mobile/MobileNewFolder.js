@@ -9,12 +9,14 @@ class MobileNewFolder extends React.Component {
 
   mobileAddFolder = (evt) => {
     evt.preventDefault();
-    const folderName = evt.target['folder-name'].value
-    this.setState({folders: data.folders})
-    api.addFolder(folderName)
-    .then(this.history.push.goBack())
-
-    
+    if (this.props.location.pathname.split('/mobile-folder/')[1] !== undefined) {
+      const folderName = evt.target['folder-name'].value
+      const folderID = this.props.location.pathname.split('/mobile-folder/')[1]
+      this.props.editFolder(folderName, folderID)
+    } else {
+      const folderName = evt.target['folder-name'].value
+      this.props.addFolder(folderName)
+    }
   }
 
   render() {
@@ -22,7 +24,7 @@ class MobileNewFolder extends React.Component {
         <form
           onSubmit={(evt) => {
             evt.preventDefault();
-            this.props.addFolder(evt.target['folder-name'].value)
+            this.mobileAddFolder(evt)
             this.props.history.goBack();
           }}
           id='mobile-new-folder'

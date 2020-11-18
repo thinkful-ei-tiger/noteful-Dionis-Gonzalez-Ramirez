@@ -31,8 +31,8 @@ class FolderDropdown extends React.Component {
         <button
           id='mobile-edit-folder'
           onClick={(evt) => {
-            this.props.editFolder(evt, this.props.location.pathname.split('folders/')[1])
-            this.props.history.push(`/mobile-folder`)
+            // this.props.editFolder(evt, this.props.location.pathname.split('folders/')[1])
+            this.props.history.push(`/mobile-folder/${this.props.location.pathname.split('folders/')[1]}`)
           }}
         >Edit
         </button>

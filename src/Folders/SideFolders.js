@@ -15,7 +15,14 @@ class SideFolders extends React.Component {
               <div className='folder' key={idx}>
                 <Link
                   to={`/folders/${folder.id}`}
-                  onBlur={(evt) => this.props.editFolder(evt, this.props.location.pathname.split('folders/')[1])}
+                  onBlur={(evt) => {
+                    this.props.editFolder(
+                      evt.target.textContent,
+                      this.props.location.pathname.split('folders/')[1]
+                    )
+                    evt.target.contentEditable = false;
+                    evt.target.classList.remove('animate');
+                  }}
                   onKeyDown={(evt) => (evt.which === 13) ? evt.target.blur() : null}
                   autoFocus={(this.props.location.pathname).includes(folder.id)}
                   onClick={(evt) => {
